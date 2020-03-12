@@ -252,7 +252,7 @@ if __name__ == "__main__":
     parser.add_argument("--log_dir", type=str, required=True)
     parser.add_argument("--model_path", type=str, required=True)
     parser.add_argument("--resume", type=int, default=0)
-    parser.add_argument("--batch_size", type=int, default=16)
+    parser.add_argument("--batch_size", type=int, default=8)
     parser.add_argument("--num_workers", type=int, default=10)
 
     args = parser.parse_args()

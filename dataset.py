@@ -5,7 +5,7 @@ from lie_learn.spaces import S2
 import hyper
 import sys
 sys.path.append('./src/build')
-from sampling import compute
+from src.sampling import compute
 
 
 def rotmat(a, b, c, hom_coord=False):  # apply to mesh using mesh.apply_transform(rotmat(a,b,c, True))
