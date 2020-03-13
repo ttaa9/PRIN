@@ -1,0 +1,6 @@
+__pycache__/*
+cache/*
+hdf5_data/*
+log/*
+src/*
+
