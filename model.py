@@ -41,10 +41,13 @@ class Model(nn.Module):
     def forward(self, x, target_index, cat_onehot):  # pylint: disable=W0221
         # concat after SO3 conv
         # B * C * a * b * c
+        print('x (pre-seq)', x.shape)
         x = self.sequential(x)  # [batch, feature, beta, alpha, gamma]
-
+        print('x (post-seq)', x.shape)
+        print('target_ind', target_index.shape)
         # B * C * N * 1 * 1
         features = F.grid_sample(x, target_index[:, :, None, None, :])
+        print('features', features.shape)
         # B * N * C
         features = features.squeeze(3).squeeze(3).permute([0, 2, 1]).contiguous()
 

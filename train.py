@@ -118,6 +118,8 @@ def main(log_dir, model_path, batch_size, resume, num_workers):
         model.train()
         data, target_index, target = data.cuda(), target_index.cuda(), target.cuda()
 
+        print('cc', data.shape, target_index.shape)
+
         _, prediction = model(data, target_index, cat_onehot)
 
         prediction = prediction.view(-1, hyper.N_PARTS)
@@ -165,6 +167,7 @@ def main(log_dir, model_path, batch_size, resume, num_workers):
 
             time_after_load = time.perf_counter()
             time_before_step = time.perf_counter()
+            print('\n', 'EEEE\n', epoch, batch_idx)
             loss, correct = train_step(data, target_index, target, one_hot_labels, True)
 
             total_loss += loss
