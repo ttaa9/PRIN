@@ -88,7 +88,7 @@ class PRIN_Encoder(nn.Module):
                             nn.ReLU(),
                             nn.Linear(final_output_dim*2, final_output_dim) )
 
-    def forward_old(self, x, target_index):
+    def forward(self, x, target_index):
         x = self.sequential(x)
         # Pool directly without resampling
         x = torch.cat([ x.max(dim = -1 )[0].max(dim = -1)[0].max(dim = -1)[0],
@@ -99,7 +99,7 @@ class PRIN_Encoder(nn.Module):
         #x = F.grid_sample(x, target_index[:, :, None, None, :])
         
 
-    def forward(self, x, target_index):  # pylint: disable=W0221
+    def forward_old(self, x, target_index):  # pylint: disable=W0221
         # Run SO(3) spherical convs
         # On spherical voxels space
         # B * C * a * b * c --> batch x channels x voxels_1 x voxels_2 x voxels_3

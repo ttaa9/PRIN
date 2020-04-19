@@ -100,7 +100,7 @@ class MyDataset(torch.utils.data.Dataset):
         features = np.asarray(compute(pts_s2_float, np.linalg.norm(pts, axis=1), hyper.R_IN, b, np.sin(np.pi * (2 * np.arange(2 * b) + 1) / 4 / b)))
     
         print('SSS', type(pts), pts.shape, pts_so3.shape, features.shape) # 2048 x 3, 2048 x 3, 64 x 64 x 64
-        #print('Mins/maxs pts', pts.min(0), pts.max(0))
-        #print('Mins/maxs p so3ts', pts_so3.min(0), pts_so3.max(0))
+        print('Mins/maxs/avg pts', pts.min(0), pts.max(0), pts.mean(0))
+        print('Mins/maxs p so3ts', pts_so3.min(0), pts_so3.max(0))
 
         return features.astype(np.float32), pts_so3.astype(np.float32), segs.astype(np.int64), pts @ rand_rot, labels.astype(np.int64)
